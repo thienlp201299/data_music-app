@@ -12,11 +12,11 @@ require('dotenv').config();
 
 const dbConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: 'localhost',
+  host: 'remotemysql.com',
   port: 3306,
-  username: 'root',
-  password: 'p@ssw0rd',
-  database: 'music',
+  username: 'ks4ukZXr2j',
+  password: '5mDYBekNv0',
+  database: 'ks4ukZXr2j',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
   //logging: true,
