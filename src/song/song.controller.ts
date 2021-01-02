@@ -1,4 +1,7 @@
 import { Get, Post, Put, Delete, Param, Body, Controller } from '@nestjs/common';
+import { AuthorEntity } from 'src/entities/author.entity';
+import { CategoriesEntity } from 'src/entities/categories.entity';
+import { SingerEntity } from 'src/entities/singer.entity';
 import { SongEntity } from '../entities/song.entity';
 import { INewSongResponse, ISearchsongNameResponse, ISongAuthorResponse, ISongDetailResponse, ISongResponse, ISongSingerResponse, ITopViewResponse } from './song.response';
 import { SongService } from './song.service';

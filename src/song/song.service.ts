@@ -34,7 +34,7 @@ export class SongService {
         let response = false;
         const result = await getRepository(SongEntity).insert(song);
         if (result) {
-            response = true
+            response = true;
         }
         return response;
     }
