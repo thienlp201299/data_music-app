@@ -1,7 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { SongEntity } from './song.entity';
-
-
 @Entity('authors')
 export class AuthorEntity {
     @PrimaryGeneratedColumn('increment') id: number;
