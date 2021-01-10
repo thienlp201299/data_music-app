@@ -10,6 +10,7 @@ export interface ISongDetailResponse {
     categoryName: string;
     song_name: string;
     music: string;
+    image: string;
     presentedBy: string;
     composedBy: string;
     createdAt: Date;

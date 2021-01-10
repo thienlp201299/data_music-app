@@ -46,12 +46,14 @@ export class SongService {
             return false;
         }
         Object.assign(song, songInfo);
+        song.view_number = song.view_number + 1
         const updated = await getRepository(SongEntity).update({ id: songId }, song);
         if (updated) {
             response = true;
         }
         return response
     }
+
     async deleteSong(songId: number): Promise<boolean> {
         let response = false;
         const deleted = await getRepository(SongEntity).delete({ id: songId });
@@ -86,6 +88,7 @@ export class SongService {
                     'cat.name as categoryName',
                     'song_name as song_name',
                     'sog.music as music',
+                    'image as image',
                     'sog.created_at as createdAt',
                     'au.name as composedBy'
                 ])
