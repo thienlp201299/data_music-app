@@ -80,7 +80,7 @@ export class SongService {
         }
     }
 
-    async getSongDetail(songId: number, pageNum: number): Promise<ISongDetailResponse | any> {
+    async getSongDetail(songId: number): Promise<ISongDetailResponse | any> {
         try {
             return await getRepository(SongEntity).createQueryBuilder('sog')
                 .select([

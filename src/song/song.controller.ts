@@ -49,8 +49,8 @@ export class SongController {
     }
 
     @Get('get_song_detail/:songId')
-    async getSongDetail(@Param('songId') songId: number, @Param('pageNum') pageNum: number): Promise<ISongDetailResponse | undefined> {
-        return this.songService.getSongDetail(songId, pageNum);
+    async getSongDetail(@Param('songId') songId: number): Promise<ISongDetailResponse | undefined> {
+        return this.songService.getSongDetail(songId);
     }
 
     @Get('get_song_by_author/:authorId/:limit/:pageNum')
