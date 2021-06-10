@@ -18,11 +18,6 @@ export class SingerEntity {
     @Column({ type: 'text', nullable: true })
     story: string;
 
-    @OneToMany(type => SongEntity,
-        songs => songs.singer,
-    )
-    songs: SongEntity[];
-
     @OneToMany(type => PresentEntity, present => present.singer)
     public presents!: PresentEntity[];
 }

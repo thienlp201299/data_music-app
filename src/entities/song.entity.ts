@@ -30,10 +30,6 @@ export class SongEntity {
     @JoinColumn({ name: 'author_id' })
     author: AuthorEntity;
 
-    @ManyToOne(type => SingerEntity, singer => singer.songs)
-    @JoinColumn({ name: 'singer_id' })
-    singer: SingerEntity;
-
     @ManyToOne(type => CategoriesEntity, category => category.songs)
     @JoinColumn({ name: 'category_id' })
     category: CategoriesEntity;

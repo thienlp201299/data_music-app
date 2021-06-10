@@ -18,4 +18,4 @@ export class PresentEntity {
 
     @ManyToOne(type => SingerEntity, singer => singer.presents)
     public singer!: SingerEntity;
-} 
+}
