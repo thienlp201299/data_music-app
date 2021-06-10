@@ -1,5 +1,5 @@
 export interface ISongResponse {
-    songName: string;
+    song_name: string;
     categoryId: number;
     id: number;
     image: string;
@@ -8,7 +8,7 @@ export interface ISongResponse {
 export interface ISongDetailResponse {
     categoryId: number;
     categoryName: string;
-    songName: string;
+    song_name: string;
     music: string;
     image: string;
     presentedBy: string;
@@ -21,7 +21,7 @@ export interface INewSongResponse {
     songId: number;
     categoryName: string;
     image: string;
-    songName: string;
+    song_name: string;
     createdAt: string;
 }
 
@@ -30,7 +30,7 @@ export interface ISongAuthorResponse {
     categoryName: string;
     composedBy: string;
     songId: number;
-    songName: string;
+    song_name: string;
     image: string;
     createdAt: Date;
 }
@@ -40,7 +40,7 @@ export interface ISongSingerResponse {
     categoryName: string;
     presentedBy: string;
     songId: number;
-    songName: string;
+    song_name: string;
     image: string;
     createdAt: Date;
 
@@ -50,7 +50,7 @@ export interface ITopViewResponse {
     categoryId: number;
     categoryName: string;
     songId: string;
-    songName: string;
+    song_name: string;
     image: string;
     createdAt: Date;
     viewNumber: number;
@@ -58,6 +58,6 @@ export interface ITopViewResponse {
 
 export interface ISearchsongNameResponse {
     songId: number;
-    songName: string;
+    song_name: string;
     image: string;
 }

@@ -11,7 +11,7 @@ export class AuthorEntity {
     avatar: string;
 
     @Column({ type: 'date' })
-    dateOfBirth: Date;
+    date_of_birth: Date;
 
     @Column({ type: 'text', nullable: true })
     story: string;

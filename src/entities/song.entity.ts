@@ -9,7 +9,7 @@ export class SongEntity {
     @PrimaryGeneratedColumn('increment') id: number;
 
     @Column({ type: 'varchar', length: 255, nullable: false })
-    songName: string;
+    song_name: string;
 
     @Column({ type: 'varchar', length: 255, nullable: false })
     music: string;
@@ -21,17 +21,17 @@ export class SongEntity {
     lyric: string;
 
     @Column({ type: 'int', nullable: false, default: 0 })
-    viewNumber: number;
+    view_number: number;
 
     @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-    createdAt: Date;
+    created_at: Date;
 
     @ManyToOne(type => AuthorEntity, author => author.songs)
-    @JoinColumn({ name: 'authorId' })
+    @JoinColumn({ name: 'author_id' })
     author: AuthorEntity;
 
     @ManyToOne(type => CategoriesEntity, category => category.songs)
-    @JoinColumn({ name: 'categoryId' })
+    @JoinColumn({ name: 'category_id' })
     category: CategoriesEntity;
 
     @OneToMany(type => PresentEntity, present => present.song)
