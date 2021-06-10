@@ -14,8 +14,8 @@ export class SongService {
             .createQueryBuilder('so')
             .select([
                 'so.id as id',
-                'so.category_id as categoryId',
-                'so.song_name as song_name',
+                'so.categoryId as categoryId',
+                'so.songName as songName',
                 'so.image as image'
             ])
             .limit(limit)
@@ -46,7 +46,7 @@ export class SongService {
             return false;
         }
         Object.assign(song, songInfo);
-        song.view_number = song.view_number + 1
+        song.viewNumber = song.viewNumber + 1
         const updated = await getRepository(SongEntity).update({ id: songId }, song);
         if (updated) {
             response = true;
@@ -68,10 +68,10 @@ export class SongService {
             return await getRepository(SongEntity).createQueryBuilder('sog')
                 .select([
                     'id as id',
-                    'category_id as categoryId',
-                    'song_name as song_name',
+                    'categoryId as categoryId',
+                    'songName as songName',
                     'image as image',
-                ]).where('sog.category_id = :categoryId', { categoryId })
+                ]).where('sog.categoryId = :categoryId', { categoryId })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
                 .getRawMany();
@@ -86,14 +86,14 @@ export class SongService {
                 .select([
                     'cat.id as categoryId',
                     'cat.name as categoryName',
-                    'song_name as song_name',
+                    'songName as songName',
                     'sog.music as music',
                     'image as image',
-                    'sog.created_at as createdAt',
+                    'sog.createdAt as createdAt',
                     'au.name as composedBy'
                 ])
-                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
-                .innerJoin(AuthorEntity, 'au', 'au.id = sog.author_id')
+                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.categoryId')
+                .innerJoin(AuthorEntity, 'au', 'au.id = sog.authorId')
                 .where('sog.id = :songId', { songId })
                 .getRawOne();
         } catch (error) {
@@ -109,13 +109,13 @@ export class SongService {
                     'cat.id as categoryId',
                     'cat.name as categoryName',
                     'sog.id as songId',
-                    'song_name as song_name',
+                    'songName as songName',
                     'image as image',
-                    'sog.created_at as createdAt'
+                    'sog.createdAt as createdAt'
                 ])
-                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
-                .innerJoin(AuthorEntity, 'au', 'au.id = sog.author_id')
-                .where('sog.author_id = :authorId', { authorId })
+                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.categoryId')
+                .innerJoin(AuthorEntity, 'au', 'au.id = sog.authorId')
+                .where('sog.authorId = :authorId', { authorId })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
                 .getRawMany();
@@ -131,11 +131,11 @@ export class SongService {
                     'cat.id as categoryId',
                     'cat.name as categoryName',
                     'sog.id as songId',
-                    'song_name as song_name',
+                    'songName as songName',
                     'image as image',
                     'si.id as presentedBy',
-                    'sog.created_at as createdAt'
-                ]).innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
+                    'sog.createdAt as createdAt'
+                ]).innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.categoryId')
                 .innerJoin(SingerEntity, 'si', 'si.id = sog.singer_id')
                 .where('sog.singer_id = :singerId', { singerId })
                 .limit(limit)
@@ -151,9 +151,9 @@ export class SongService {
             return await getRepository(SongEntity).createQueryBuilder('sog')
                 .select([
                     'sog.id as songId',
-                    'sog.song_name as song_name',
+                    'sog.songName as songName',
                     'sog.image as image'
-                ]).where('sog.song_name like :songName ', { songName: '%' + songName + '%' })
+                ]).where('sog.songName like :songName ', { songName: '%' + songName + '%' })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
                 .getRawMany();
@@ -170,13 +170,13 @@ export class SongService {
                     'sog.id as songId',
                     'cat.name as categoryName',
                     'image as image',
-                    'song_name as song_name',
-                    'created_at as createdAt'
+                    'songName as songName',
+                    'createdAt as createdAt'
                 ])
-                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
+                .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.categoryId')
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
-                .orderBy('sog.created_at', 'DESC')
+                .orderBy('sog.createdAt', 'DESC')
                 .getRawMany();
         } catch (error) {
             console.log(this.getNewSong.toString(), error);
@@ -190,14 +190,14 @@ export class SongService {
                     'cat.id as categoryId',
                     'cat.name as categoryName',
                     'sog.id as songId',
-                    'song_name as song_name',
+                    'songName as songName',
                     'image as image',
-                    'sog.created_at as createdAt',
-                    'sog.view_number as viewNumber'
-                ]).innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
+                    'sog.createdAt as createdAt',
+                    'sog.viewNumber as viewNumber'
+                ]).innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.categoryId')
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
-                .orderBy('sog.view_number', 'DESC')
+                .orderBy('sog.viewNumber', 'DESC')
                 .getRawMany();
         } catch (error) {
             console.log(this.getTopViewSongs.toString(), error);

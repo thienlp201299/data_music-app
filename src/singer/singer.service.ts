@@ -60,7 +60,7 @@ export class SingerService {
                 .select([
                     'si.singer as singerName',
                     'sog.id as songId',
-                    'sog.song_name as song_name',
+                    'sog.songName as songName',
                     'sog.image as image',
                     'sog.music as music'
                 ])

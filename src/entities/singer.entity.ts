@@ -10,10 +10,10 @@ export class SingerEntity {
     singer: string;
 
     @Column({ type: 'varchar', length: 255, nullable: false })
-    avatar_singer: string;
+    avatarSinger: string;
 
     @Column({ type: 'date' })
-    date_of_birth: Date;
+    dateOfBirth: Date;
 
     @Column({ type: 'text', nullable: true })
     story: string;
