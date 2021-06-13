@@ -13,9 +13,13 @@ export class PresentEntity {
     @Column()
     public singerId!: number;
 
-    @ManyToOne(type => SongEntity, song => song.presents)
+    @ManyToOne(type => SongEntity, song => song.presents, {
+        cascade: true
+    })
     public song!: SongEntity;
 
-    @ManyToOne(type => SingerEntity, singer => singer.presents)
+    @ManyToOne(type => SingerEntity, singer => singer.presents, {
+        cascade: true
+    })
     public singer!: SingerEntity;
 }

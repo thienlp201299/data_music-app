@@ -26,11 +26,15 @@ export class SongEntity {
     @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
     created_at: Date;
 
-    @ManyToOne(type => AuthorEntity, author => author.songs)
+    @ManyToOne(type => AuthorEntity, author => author.songs, {
+        cascade: true
+    })
     @JoinColumn({ name: 'author_id' })
     author: AuthorEntity;
 
-    @ManyToOne(type => CategoriesEntity, category => category.songs)
+    @ManyToOne(type => CategoriesEntity, category => category.songs, {
+        cascade: true
+    })
     @JoinColumn({ name: 'category_id' })
     category: CategoriesEntity;
 
