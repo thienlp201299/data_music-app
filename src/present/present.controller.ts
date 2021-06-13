@@ -3,9 +3,14 @@ import { PresentEntity } from 'src/entities/present.entity';
 import { ISongSingerResponse } from './present.response';
 import { PresentService } from './present.service';
 
-@Controller('present')
+@Controller('presents')
 export class PresentController {
     constructor(private readonly presentSevice: PresentService) { }
+
+    @Get('detail/:presentId')
+    async getPresentId(@Param('presentId') presentId: number): Promise<PresentEntity> {
+        return await this.presentSevice.getPresentInfo(presentId);
+    }
 
     @Post('create')
     async createPresent(@Body() presentData: PresentEntity): Promise<boolean> {
