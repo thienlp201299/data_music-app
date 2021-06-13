@@ -124,28 +124,6 @@ export class SongService {
         }
     }
 
-    async getSongBySingerId(singerId: number, limit: number, pageNum: number): Promise<ISongSingerResponse[] | any> {
-        try {
-            return await getRepository(SongEntity).createQueryBuilder('sog')
-                .select([
-                    'cat.id as categoryId',
-                    'cat.name as categoryName',
-                    'sog.id as songId',
-                    'song_name as song_name',
-                    'image as image',
-                    'si.id as presentedBy',
-                    'sog.created_at as createdAt'
-                ]).innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
-                .innerJoin(SingerEntity, 'si', 'si.id = sog.singer_id')
-                .where('sog.singer_id = :singerId', { singerId })
-                .limit(limit)
-                .offset((pageNum - 1) * limit)
-                .getRawMany();
-        } catch (error) {
-            console.log(this.getSongBySingerId.toString(), error);
-        }
-    }
-
     async searchSongBysongName(songName: string, limit: number, pageNum: number): Promise<ISearchsongNameResponse[] | any> {
         try {
             return await getRepository(SongEntity).createQueryBuilder('sog')
