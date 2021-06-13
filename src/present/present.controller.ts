@@ -17,19 +17,13 @@ export class PresentController {
         return await this.presentSevice.createPresent(presentData);
     }
 
-    @Put('update/:presentId')
-    async updatePresent(
-        @Param('presentId') presentId: number,
-        @Body() presentInfo: PresentEntity,
-    ): Promise<boolean> {
-        return await this.presentSevice.updatePresent(presentId, presentInfo);
-    }
 
-    @Delete('delete/:presentId')
+    @Delete('delete/:songId/:singerId')
     async deletePresent(
-        @Param('presentId') presentId: number
+        @Param('songId') songId: number,
+        @Param('singerId') singerId: number,
     ): Promise<boolean> {
-        return await this.presentSevice.deletePresent(presentId);
+        return await this.presentSevice.deletePresent(songId, singerId);
     }
 
     @Get('get_song_by_singer/:singerId/:limit/:pageNum')

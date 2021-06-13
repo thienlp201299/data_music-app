@@ -1,16 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, PrimaryColumn } from 'typeorm'
 import { SongEntity } from './song.entity';
 import { SingerEntity } from './singer.entity';
 
 @Entity('presents')
 export class PresentEntity {
-    @PrimaryGeneratedColumn('increment')
-    public presentId!: number;
 
-    @Column()
+    @PrimaryColumn()
     public songId!: number;
 
-    @Column()
+    @PrimaryColumn()
     public singerId!: number;
 
     @ManyToOne(type => SongEntity, song => song.presents, {

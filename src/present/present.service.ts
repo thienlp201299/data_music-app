@@ -24,27 +24,15 @@ export class PresentService {
         return response;
     }
 
-    async updatePresent(presentId: number, presentInfo: PresentEntity): Promise<boolean> {
-        let response = false;
-        let present = await this.getPresentInfo(presentId)
-        if (!present) {
-            return false;
-        }
-        Object.assign(present, presentInfo);
-        const updated = await getRepository(PresentEntity).update({ presentId!: presentId }, present);
-        if (updated) {
-            response = true;
-        }
-        return response
-    }
 
-    async deletePresent(presentId: number): Promise<boolean> {
+    async deletePresent(songId: number, singerId: number): Promise<boolean> {
         let response = false;
-        const deleted = await getRepository(PresentEntity).delete({ presentId!: presentId });
+        const deleted = await getRepository(PresentEntity).delete({ songId, singerId });
         if (deleted) {
             response = true;
+
+            return response;
         }
-        return response;
     }
 
     async getSongBySingerId(singerId: number, limit: number, pageNum: number): Promise<ISongSingerResponse[] | any> {
