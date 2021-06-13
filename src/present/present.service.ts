@@ -11,7 +11,7 @@ export class PresentService {
     async getPresentInfo(presentId: number): Promise<PresentEntity> {
         return await getRepository(PresentEntity)
             .createQueryBuilder('pre')
-            .where('pre.id = :presentId', { presentId })
+            .where('pre.presentId = :presentId', { presentId })
             .getOne();
     }
 
@@ -51,15 +51,14 @@ export class PresentService {
         try {
             return await getRepository(PresentEntity).createQueryBuilder('pre')
                 .select([
-                    'si.id as singerId',
-                    'singer  as singer',
-                    'pre.id as presentId',
+                    'singer as singer',
+                    'pre.presentId as presentId',
                     'song_name as song_name',
                     'image as image',
                     'si.id as presentedBy',
                     'sog.created_at as createdAt'
                 ]).innerJoin(SingerEntity, 'si', 'si.id = pre.singer_id')
-                .innerJoin(SongEntity, "pre", 'pre.id = pre.sonq_id')
+                .innerJoin(SongEntity, "soq", 'soq.id = pre.sonq_id')
                 .where('pre.singer_id = :singerId', { singerId })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)

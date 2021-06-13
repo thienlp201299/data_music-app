@@ -32,6 +32,7 @@ export class SongService {
 
     async createSong(song: SongEntity): Promise<boolean> {
         let response = false;
+        console.log("song", song)
         const result = await getRepository(SongEntity).insert(song);
         if (result) {
             response = true;

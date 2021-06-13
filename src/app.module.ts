@@ -20,7 +20,7 @@ const dbConfig: TypeOrmModuleOptions = {
   logging: true,
   autoLoadEntities: true,
   entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: true,
+  synchronize: false,
   //logging: true,
 
 }
