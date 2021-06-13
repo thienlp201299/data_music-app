@@ -27,15 +27,15 @@ export class SongEntity {
     created_at: Date;
 
     @ManyToOne(type => AuthorEntity, author => author.songs, {
-        cascade: ["insert"]
+        cascade: ["insert", "update"]
     })
-    @JoinColumn([{ name: 'author_id', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'author_id', referencedColumnName: 'author_id' }])
     author: AuthorEntity;
 
     @ManyToOne(type => CategoriesEntity, category => category.songs, {
-        cascade: ["insert"]
+        cascade: ["insert", "update"]
     })
-    @JoinColumn([{ name: 'category_id', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'category_id', referencedColumnName: 'category_id' }])
     category: CategoriesEntity;
 
     @OneToMany(type => PresentEntity, present => present.song)
