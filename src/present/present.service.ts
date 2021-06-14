@@ -40,11 +40,10 @@ export class PresentService {
             return await getRepository(PresentEntity).createQueryBuilder('pre')
                 .select([
                     'songId as songId',
-                    'singerId as singer',
-                    'song_name as song_name',
-                    'image as image',
-                    'si.id as presentedBy',
-                    'created_at as createdAt'
+                    'singerId as presentedBy',
+                    'songId.song_name as song_name',
+                    'songId.image as image',
+                    'songId.created_at as createdAt'
                 ]).innerJoin(SingerEntity, 'si', 'singerId = pre.singerId')
                 .innerJoin(SongEntity, "soq", 'songId = pre.songId')
                 .where('pre.singerId = :singerId', { singerId })
