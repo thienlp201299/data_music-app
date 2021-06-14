@@ -1,7 +1,6 @@
 export interface ISongSingerResponse {
     singer: string;
-    presentId: number;
-    presentedBy: string;
+    presentedBy: number;
     songId: number;
     song_name: string;
     image: string;
