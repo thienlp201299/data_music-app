@@ -41,9 +41,9 @@ export class PresentService {
                 .select([
                     'songId as songId',
                     'singerId as presentedBy',
-                    'songId.song_name as song_name',
-                    'songId.image as image',
-                    'songId.created_at as createdAt'
+                    'soq.song_name as song_name',
+                    'soq.image as image',
+                    'soq.created_at as createdAt'
                 ]).innerJoin(SingerEntity, 'si', 'singerId = pre.singerId')
                 .innerJoin(SongEntity, "soq", 'songId = pre.songId')
                 .where('pre.singerId = :singerId', { singerId })
