@@ -15,13 +15,12 @@ const dbConfig: TypeOrmModuleOptions = {
   host: 'remotemysql.com',
   port: Number(3306),
   username: 'J5uZeW8XVK',
-  password: 'HKJ08LSPpW',
+  password: 'HKJ08LSPpW', //p@ssw0rd
   database: 'J5uZeW8XVK',
   logging: true,
   autoLoadEntities: true,
   entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: false,
-  //logging: true,
+  synchronize: true,
 
 }
 

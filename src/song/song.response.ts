@@ -35,16 +35,6 @@ export interface ISongAuthorResponse {
     createdAt: Date;
 }
 
-export interface ISongSingerResponse {
-    categoryId: number;
-    categoryName: string;
-    presentedBy: string;
-    songId: number;
-    song_name: string;
-    image: string;
-    createdAt: Date;
-
-}
 
 export interface ITopViewResponse {
     categoryId: number;

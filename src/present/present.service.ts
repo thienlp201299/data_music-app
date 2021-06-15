@@ -39,14 +39,13 @@ export class PresentService {
         try {
             return await getRepository(PresentEntity).createQueryBuilder('pre')
                 .select([
-                    'songId as songId',
+                    'soq.id as songId',
                     'singerId as presentedBy',
-                    'soq.song_name as song_name',
-                    'soq.image as image',
-                    'soq.created_at as createdAt'
-                ]).innerJoin(SingerEntity, 'si', 'singerId = pre.singerId')
-                .innerJoin(SongEntity, "soq", 'songId = pre.songId')
-                .where('pre.singerId = :singerId', { singerId })
+                    'song_name as song_name',
+                    'image as image',
+                    'created_at as createdAt'
+                ]).leftJoin(SongEntity, 'soq', 'soq.id = pre.songId')
+                .where('singerId = :singerId', { singerId })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
                 .getRawMany();
@@ -54,5 +53,4 @@ export class PresentService {
             console.log(this.getSongBySingerId.toString(), error);
         }
     }
-
 }

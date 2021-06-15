@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { getRepository } from 'typeorm';
 import { SongEntity } from '../entities/song.entity';
-import { INewSongResponse, ISongDetailResponse, ISongResponse, ISongAuthorResponse, ISongSingerResponse, ITopViewResponse, ISearchsongNameResponse } from './song.response';
+import { INewSongResponse, ISongDetailResponse, ISongResponse, ISongAuthorResponse, ITopViewResponse, ISearchsongNameResponse } from './song.response';
 import { CategoriesEntity } from '../entities/categories.entity';
 import { SingerEntity } from 'src/entities/singer.entity';
 import { AuthorEntity } from 'src/entities/author.entity';
+import { PresentEntity } from 'src/entities/present.entity';
 
 @Injectable()
 export class SongService {
@@ -124,6 +125,7 @@ export class SongService {
             console.log(this.getSongByAuthorId.toString(), error);
         }
     }
+
 
     async searchSongBysongName(songName: string, limit: number, pageNum: number): Promise<ISearchsongNameResponse[] | any> {
         try {
