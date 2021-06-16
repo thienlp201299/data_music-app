@@ -34,6 +34,8 @@ export class SongEntity {
     @JoinColumn([{ name: 'category_id', referencedColumnName: 'id' }])
     category: CategoriesEntity;
 
-    @OneToMany(type => PresentEntity, present => present.song)
+    @OneToMany(type => PresentEntity, present => present.song, {
+        cascade: ["insert", "update", "remove"]
+    })
     public presents!: PresentEntity[];
 }
