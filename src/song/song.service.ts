@@ -143,6 +143,7 @@ export class SongService {
         }
     }
 
+
     async getNewSong(limit: number, pageNum: number): Promise<INewSongResponse[] | any> {
         try {
             return await getRepository(SongEntity).createQueryBuilder('sog')
