@@ -134,7 +134,7 @@ export class SongService {
                     'sog.id as songId',
                     'sog.song_name as song_name',
                     'sog.image as image',
-                    'song.music as music'
+                    'sog.music as music'
                 ]).where('sog.song_name like :songName ', { songName: '%' + songName + '%' })
                 .limit(limit)
                 .offset((pageNum - 1) * limit)
