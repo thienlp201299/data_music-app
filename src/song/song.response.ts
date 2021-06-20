@@ -50,4 +50,5 @@ export interface ISearchsongNameResponse {
     songId: number;
     song_name: string;
     image: string;
+    music: string;
 }
