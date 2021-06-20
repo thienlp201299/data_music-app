@@ -65,6 +65,7 @@ export class SongController {
         return this.songService.searchSongBysongName(songCondition.songName, limit, pageNum);
     }
 
+
     @Get('get_new_song/:limit/:pageNum')
     async getNewSong(@Param('limit') limit: number, @Param('pageNum') pageNum: number): Promise<INewSongResponse[] | undefined> {
         return this.songService.getNewSong(limit, pageNum);
