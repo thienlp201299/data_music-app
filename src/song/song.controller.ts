@@ -58,9 +58,11 @@ export class SongController {
         return this.songService.getSongByAuthorId(authorId, limit, pageNum);
     }
 
-    @Get('search_song_by_songname/:songName/:limit/:pageNum')
-    async searchSongBysongName(@Param('songName') songName: string, @Param('limit') limit: number, @Param('pageNum') pageNum: number): Promise<ISearchsongNameResponse[] | undefined> {
-        return this.songService.searchSongBysongName(songName, limit, pageNum);
+    @Post('search_song_by_songname/:limit/:pageNum')
+    async searchSongBysongName(@Body() songCondition: any,
+        @Param('limit') limit: number,
+        @Param('pageNum') pageNum: number): Promise<ISearchsongNameResponse[] | undefined> {
+        return this.songService.searchSongBysongName(songCondition.songName, limit, pageNum);
     }
 
     @Get('get_new_song/:limit/:pageNum')
