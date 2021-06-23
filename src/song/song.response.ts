@@ -23,6 +23,7 @@ export interface INewSongResponse {
     image: string;
     song_name: string;
     createdAt: string;
+    music: string;
 }
 
 export interface ISongAuthorResponse {

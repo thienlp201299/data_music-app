@@ -154,7 +154,8 @@ export class SongService {
                     'cat.name as categoryName',
                     'image as image',
                     'song_name as song_name',
-                    'created_at as createdAt'
+                    'created_at as createdAt',
+                    'sog.music as music'
                 ])
                 .innerJoin(CategoriesEntity, 'cat', 'cat.id = sog.category_id')
                 .limit(limit)
